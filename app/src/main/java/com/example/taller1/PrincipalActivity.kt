@@ -23,6 +23,10 @@ class PrincipalActivity : AppCompatActivity() {
             val userName = nameEditText.text.toString()
             displayTextView.text = userName
         }
-
+        // Navegar a la pantalla de configuración
+        goToConfigButton.setOnClickListener {
+            val intent = Intent(this, ConfigActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

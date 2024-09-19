@@ -25,5 +25,10 @@ class MainActivity : AppCompatActivity() {
         }
         greetingTextView.text = greeting
 
+        //Navegar a la principal
+        buttonStart.setOnClickListener {
+            val intent = Intent(this, PrincipalActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

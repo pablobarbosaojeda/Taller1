@@ -8,18 +8,22 @@ Esta aplicación Android es un ejercicio básico para aprender a crear aplicacio
 
 ## Pantallas de la Aplicación
 
+
 ### 1. Pantalla de Inicio (MainActivity)
 
 - **Función**: Muestra un saludo personalizado que cambia según la hora del día (por ejemplo, "Buenos días", "Buenas tardes" o "Buenas noches").
-- **Interacción**: Incluye un botón para navegar a la Pantalla Principal.
-
+- **Interacción**: 
+  - Un botón permite navegar a la Pantalla Principal.
+  
 ### 2. Pantalla Principal (PrincipalActivity)
 
-- **Función**: Permite al usuario ingresar su nombre y verlo reflejado en la misma pantalla.
-- **Interacción**: 
+- **Función**: Permite al usuario ingresar su nombre, guardarlo y simular una operación de red en segundo plano.
+- **Interacción**:
   - Campo de texto para ingresar el nombre.
   - Botón para guardar y mostrar el nombre ingresado.
-  - Incluye otro botón para navegar a la Pantalla de Configuración.
+  - Botón para iniciar una tarea en segundo plano que simula una operación de red, mostrando el progreso a través de una barra de progreso.
+  - Botón para navegar a la Pantalla de Configuración.
+  - Botón para regresar al menú principal.
 
 ### 3. Pantalla de Configuración (ConfigActivity)
 

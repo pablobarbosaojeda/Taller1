@@ -31,6 +31,14 @@ Esta aplicación Android es un ejercicio básico para aprender a crear aplicacio
 - **Interacción**:
   - Botones para cambiar el color de fondo a rojo o azul.
   - Botón para regresar a la Pantalla de Inicio.
+  
+### 4. Clase de Gestión de la Base de Datos (DatabaseHelper)
+
+- **Función**: Maneja las operaciones de la base de datos, como la creación de tablas, inserción, actualización y eliminación de datos.
+- **Interacción**:
+  - La clase `DatabaseHelper` extiende `SQLiteOpenHelper` y se encarga de la creación y actualización de la base de datos.
+  - Define constantes para el nombre de la base de datos, la versión, el nombre de la tabla y las columnas.
+  - Implementa los métodos `onCreate` y `onUpgrade` para gestionar la creación y actualización de la base de datos.
 
 ## Cómo Usar la Aplicación
 

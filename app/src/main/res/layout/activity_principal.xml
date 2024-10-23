@@ -25,25 +25,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.8" />
 
-    <!-- Botón para guardar el nombre -->
+    <!-- Botón para guardar el nombre en SharedPreferences -->
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Guardar"
+        android:text="Guardar en SharedPreferences"
         android:textSize="18sp"
         android:backgroundTint="@color/purple_500"
         android:textColor="@color/white"
         android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@+id/nameEditText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
 
     <!-- Texto que muestra el nombre guardado -->
     <TextView
         android:id="@+id/displayTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Su nombre es: "
@@ -52,12 +53,61 @@
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Botón para guardar el nombre en la base de datos -->
+    <Button
+        android:id="@+id/saveToDbButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Guardar en Base de Datos"
+        android:textSize="18sp"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/displayTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Botón para cargar los nombres desde la base de datos -->
+    <Button
+        android:id="@+id/loadFromDbButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Cargar desde Base de Datos"
+        android:textSize="18sp"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/saveToDbButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Botón para limpiar la base de datos -->
+    <Button
+        android:id="@+id/clearDbButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Limpiar Base de Datos"
+        android:textSize="18sp"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/loadFromDbButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
 
     <!-- Botón para navegar a la pantalla de configuración -->
     <Button
         android:id="@+id/goToConfigButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Configuración"
@@ -65,14 +115,15 @@
         android:backgroundTint="@color/purple_500"
         android:textColor="@color/white"
         android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/displayTextView"
+        app:layout_constraintTop_toBottomOf="@+id/clearDbButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
 
     <!-- Botón para simular operación de red -->
     <Button
         android:id="@+id/btnStartTask"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Accediendo a Red"
@@ -82,7 +133,8 @@
         android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@+id/goToConfigButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
 
     <!-- Barra de progreso -->
     <ProgressBar
@@ -100,7 +152,7 @@
     <!-- Botón para volver al menú principal -->
     <Button
         android:id="@+id/btnGoToMenu"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Volver al menú principal"
@@ -110,6 +162,7 @@
         android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

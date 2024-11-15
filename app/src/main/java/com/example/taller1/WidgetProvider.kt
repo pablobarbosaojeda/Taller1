@@ -28,7 +28,7 @@ class WidgetProvider : AppWidgetProvider() {
         val dbHelper = DatabaseHelper(context)
         val db = dbHelper.readableDatabase
 
-        // Obtener nombres de la base de datos
+        // Obtener nombres desde la base de datos
         val cursor = db.query("users", arrayOf("name"), null, null, null, null, null)
         val userNames = mutableListOf<String>()
         while (cursor.moveToNext()) {
@@ -49,6 +49,7 @@ class WidgetProvider : AppWidgetProvider() {
         // Configurar botón para actualizar
         val intentUpdate = Intent(context, WidgetProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, intArrayOf(appWidgetId))
         }
         val pendingIntent = PendingIntent.getBroadcast(
             context,

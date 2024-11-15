@@ -4,6 +4,11 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -13,13 +18,19 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import kotlin.math.abs
 
-class PrincipalActivity : AppCompatActivity() {
+class PrincipalActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var dbHelper: DatabaseHelper
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var progressBar: ProgressBar
+    private lateinit var layout: ConstraintLayout
+    private lateinit var sensorManager: SensorManager
+    private var accelerometer: Sensor? = null
     private val handler = Handler(Looper.getMainLooper())
+    private val shakeThreshold = 15.0 // Límite para detectar movimiento
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +38,15 @@ class PrincipalActivity : AppCompatActivity() {
 
         dbHelper = DatabaseHelper(this)
         sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        layout = findViewById(R.id.principalLayout)
+        progressBar = findViewById(R.id.progressBar)
+
+        // Inicializar SensorManager y acelerómetro
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        accelerometer?.let {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
+        }
 
         // Elementos existentes en el diseño
         val nameEditText = findViewById<EditText>(R.id.nameEditText)
@@ -38,8 +58,7 @@ class PrincipalActivity : AppCompatActivity() {
         val goToConfigButton = findViewById<Button>(R.id.goToConfigButton)
         val btnStartTask = findViewById<Button>(R.id.btnStartTask)
         val btnGoToMenu = findViewById<Button>(R.id.btnGoToMenu)
-        val showFragmentsButton = findViewById<Button>(R.id.showFragmentsButton) // Botón para nueva actividad
-        progressBar = findViewById(R.id.progressBar)
+        val showFragmentsButton = findViewById<Button>(R.id.showFragmentsButton)
 
         // Lógica original
         saveButton.setOnClickListener {
@@ -76,12 +95,48 @@ class PrincipalActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        displayTextView.text = getUserNameFromPreferences()
-
-        // Redirigir a FragmentsActivity
         showFragmentsButton.setOnClickListener {
             val intent = Intent(this, FragmentsActivity::class.java)
             startActivity(intent)
+        }
+
+        displayTextView.text = getUserNameFromPreferences()
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        if (event?.sensor?.type == Sensor.TYPE_ACCELEROMETER) {
+            val x = event.values[0]
+            val y = event.values[1]
+            val z = event.values[2]
+
+            // Detectar movimiento basado en el límite definido
+            val movement = abs(x) + abs(y) + abs(z)
+            if (movement > shakeThreshold) {
+                val randomColor = Color.rgb(
+                    (0..255).random(),
+                    (0..255).random(),
+                    (0..255).random()
+                )
+                layout.setBackgroundColor(randomColor)
+            }
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        // No se necesita implementar para esta funcionalidad
+    }
+
+    override fun onPause() {
+        super.onPause()
+        // Detener el listener del sensor cuando la actividad está en pausa
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Registrar el listener del sensor nuevamente al reanudar la actividad
+        accelerometer?.let {
+            sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_NORMAL)
         }
     }
 

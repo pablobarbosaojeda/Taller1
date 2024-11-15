@@ -28,6 +28,7 @@ class PrincipalActivity : AppCompatActivity() {
         dbHelper = DatabaseHelper(this)
         sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
 
+        // Elementos existentes en el diseño
         val nameEditText = findViewById<EditText>(R.id.nameEditText)
         val saveButton = findViewById<Button>(R.id.saveButton)
         val displayTextView = findViewById<TextView>(R.id.displayTextView)
@@ -37,8 +38,10 @@ class PrincipalActivity : AppCompatActivity() {
         val goToConfigButton = findViewById<Button>(R.id.goToConfigButton)
         val btnStartTask = findViewById<Button>(R.id.btnStartTask)
         val btnGoToMenu = findViewById<Button>(R.id.btnGoToMenu)
+        val showFragmentsButton = findViewById<Button>(R.id.showFragmentsButton) // Botón para nueva actividad
         progressBar = findViewById(R.id.progressBar)
 
+        // Lógica original
         saveButton.setOnClickListener {
             val userName = nameEditText.text.toString()
             saveUserNameToPreferences(userName)
@@ -74,6 +77,12 @@ class PrincipalActivity : AppCompatActivity() {
         }
 
         displayTextView.text = getUserNameFromPreferences()
+
+        // Redirigir a FragmentsActivity
+        showFragmentsButton.setOnClickListener {
+            val intent = Intent(this, FragmentsActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun simulateNetworkOperation() {

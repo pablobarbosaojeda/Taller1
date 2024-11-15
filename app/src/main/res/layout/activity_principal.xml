@@ -56,111 +56,88 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8" />
 
-    <!-- Botón para guardar el nombre en la base de datos -->
+    <!-- Botones -->
     <Button
         android:id="@+id/saveToDbButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Guardar en Base de Datos"
-        android:textSize="18sp"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@color/white"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/displayTextView"
+        app:layout_constraintTop_toBottomOf="@id/displayTextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón para cargar los nombres desde la base de datos -->
     <Button
         android:id="@+id/loadFromDbButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Cargar desde Base de Datos"
-        android:textSize="18sp"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@color/white"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/saveToDbButton"
+        app:layout_constraintTop_toBottomOf="@id/saveToDbButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón para limpiar la base de datos -->
     <Button
         android:id="@+id/clearDbButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Limpiar Base de Datos"
-        android:textSize="18sp"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@color/white"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/loadFromDbButton"
+        app:layout_constraintTop_toBottomOf="@id/loadFromDbButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón para navegar a la pantalla de configuración -->
     <Button
         android:id="@+id/goToConfigButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="Configuración"
-        android:textSize="18sp"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@color/white"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/clearDbButton"
+        app:layout_constraintTop_toBottomOf="@id/clearDbButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón para simular operación de red -->
     <Button
         android:id="@+id/btnStartTask"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Accediendo a Red"
-        android:textSize="18sp"
-        android:backgroundTint="@color/purple_500"
-        android:textColor="@color/white"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/goToConfigButton"
+        app:layout_constraintTop_toBottomOf="@id/goToConfigButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Barra de progreso -->
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/btnStartTask"
+        app:layout_constraintTop_toBottomOf="@id/btnStartTask"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón para volver al menú principal -->
     <Button
         android:id="@+id/btnGoToMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Volver al menú principal"
+        app:layout_constraintTop_toBottomOf="@id/progressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón para abrir FragmentsActivity -->
+    <Button
+        android:id="@+id/showFragmentsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Ir a Fragmentos"
         android:textSize="18sp"
         android:backgroundTint="@color/purple_500"
         android:textColor="@color/white"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@id/btnGoToMenu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.8" />

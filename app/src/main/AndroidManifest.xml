@@ -39,6 +39,7 @@
             android:label="ConfigActivity"
             android:theme="@style/Theme.Taller1"/>
 
+        <activity android:name=".FragmentsActivity" />
     </application>
 
 </manifest>
